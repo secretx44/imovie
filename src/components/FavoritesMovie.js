@@ -6,7 +6,7 @@ import '../index.scss'
 function FavoritesMovie() {
   const [movies, setMovies] = useState([]);
   const url =
-    "https://api.themoviedb.org/3/account/{56b77f731923cb1f4c9938be6b7f13a466b2fd3b}/favorite/movies?api_key=5b0e5846ca807c54fbd77c4694dbbd5f&language=en-US&sort_by=created_at.asc&page=1";
+    "";
 
   useEffect(() => {
     fetchPopular();

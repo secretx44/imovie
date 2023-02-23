@@ -15,7 +15,8 @@ function MovieList() {
   const fetchPopular = async () => {
     const data = await fetch(url);
     const movies = await data.json();
-    setMovies(movies.results);
+      setMovies(movies.results);
+      console.log(movies.results)
   };
 
   return (
