@@ -3,33 +3,29 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import "../index.scss"
 
-function MovieList() {
+function NowPlaying() {
   const [movies, setMovies] = useState([])
-  const [Loading, setLoading] = useState(false)
-
+	const [Loading, setLoading] = useState(false)
   const url =
-    "https://api.themoviedb.org/3/discover/movie?api_key=5b0e5846ca807c54fbd77c4694dbbd5f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=5b0e5846ca807c54fbd77c4694dbbd5f&language=en-US&page=1"
 
   useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
+		setLoading(true)
+		setTimeout(() => {
       setLoading(false)
-      fetchPopular()
+      fetchNowPlaying()
     }, 1000)
-  }, [])
+  },  [])
 
-  const fetchPopular = async () => {
-    setLoading(true)
+  const fetchNowPlaying = async () => {
     const data = await fetch(url)
     const movies = await data.json()
     setMovies(movies.results)
-    setLoading(false)
-    console.log("@@",movies.results)
   }
 
   return (
     <div>
-      <ul>
+     <ul>
         {Loading ? (
           <svg className="flex mx-auto" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
             <g transform="translate(50 50)">
@@ -70,4 +66,4 @@ function MovieList() {
   )
 }
 
-export default MovieList
+export default NowPlaying
